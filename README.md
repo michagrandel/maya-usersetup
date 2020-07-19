@@ -9,9 +9,7 @@ Copy the python scripts into your Maya Script directory. After that, restart May
 To find your maya script directory, open up the Script Editor in Maya and run the following MEL-command:
 ```internalVar -usd;```
 
-Default locations: 
-
-*Replace <version> with your Maya Version*
+**Default locations** *Replace &lt;version&gt; with your Maya Version*:
 
 - Windows: `%USERPROFILE%\Documents\maya\<version>\scripts`
 - Mac: `~/Library/Preferences/Autodesk/Maya/<version>/scripts`
