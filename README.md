@@ -1,0 +1,2 @@
+# usersetup
+Maya User Setup
