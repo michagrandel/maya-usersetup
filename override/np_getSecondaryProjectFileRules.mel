@@ -1,0 +1,56 @@
+// ===========================================================================
+// Copyright 2019 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+//
+//  Description:
+//          Get the list of secondary project file rules
+//  Input:
+//          the value true means it will return the default file rules list.
+//          the value false means it will return the file rules list of the current workspace
+//
+global proc string[] np_getSecondaryProjectFileRules(int $bUseDefaults)
+{
+    string $defaults[] =
+	{
+//		Label							                    file rule name		    Default
+		(uiRes("m_np_getSecondaryProjectFileRules.kOfflineEdits")),				"offlineEdit",		  "assets",
+		(uiRes("m_np_getSecondaryProjectFileRules.kPaintTextures")),		  "3dPaintTextures",	"assets/textures",		//now file rule should obey isValidObjectName.change file rule name
+		(uiRes("m_np_getSecondaryProjectFileRules.kDepth")),				      "depth",		        "data/depth",
+		(uiRes("m_np_getSecondaryProjectFileRules.kIPRImages")),				  "iprImages",		    "data/temp/render",
+		(uiRes("m_np_getSecondaryProjectFileRules.kShaders")),				    "shaders",		      "data/shaders",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFurFiles")),				    "furFiles",		      "data/deprecated",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFurImages")),				  "furImages",		    "data/deprecated",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFurEqualizerMap")),		"furEqualMap",		  "data/deprecated",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFurAttributeMap")),		"furAttrMap",		    "data/deprecated",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFurShadowMap")),				"furShadowMap",		  "data/deprecated",
+		(uiRes("m_np_getSecondaryProjectFileRules.kParticleCache")),		  "particles",	      "data/temp/cache/particles",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFluidCache")),				  "fluidCache",	      "data/temp/cache/fluid",
+		(uiRes("m_np_getSecondaryProjectFileRules.kFileCache")),				  "fileCache",	      "data/temp/cache/file",
+// legal with or without Bifrost loaded.  If not defined then some Maya tools to navigate directories are not activated
+		(uiRes("m_np_getSecondaryProjectFileRules.kTimeEditorClips")),		"teClipExports",	        "Time Editor/Clip Exports",
+//      for internal translator
+	    (uiRes("m_np_getSecondaryProjectFileRules.kMayaAscii")),        "mayaAscii",        "assets",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kMayaBinary")),       "mayaBinary",       "scenes",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kMel")),              "mel",              "data/tools",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kObj")),              "OBJ",              "data/exchange",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kAudio")),            "audio",            "data/exchange",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kMove")),             "move",             "data/exchange",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kEPS")),              "eps",              "data/exchange",
+	    (uiRes("m_np_getSecondaryProjectFileRules.kIllustrator")),      "illustrator",      "data/exchange"
+	};
+
+	if(!$bUseDefaults)
+	{
+	    int $listSize = size($defaults);
+	    for($i = 0; $i < $listSize; $i += 3)
+	    {
+	       $defaults[$i+2] = `workspace -q -fre $defaults[$i+1]`;
+	    }
+	}
+
+	return $defaults;
+}

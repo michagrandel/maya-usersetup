@@ -1,0 +1,10 @@
+// <> with <3 by Micha Grandel, talk@michagrandel.de
+// userSetup.mel - start script to initialize Maya environment
+
+// load startup scripts
+print( "Load startup files ...\n" );
+source "override/np_getPrimaryProjectFileRules.mel";
+source "override/np_getSecondaryProjectFileRules.mel";
+
+// finish userSetup.mel
+print( "Finished userSetup.mel successfully\n" );
