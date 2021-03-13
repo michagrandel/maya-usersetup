@@ -4,7 +4,7 @@ This is a custom user setup to setup and initalize a maya workstation.
 
 ## Installation
 
-Copy the python scripts into your Maya Script directory. After that, restart Maya.
+Copy the scripts into your Maya Script directory. After that, restart Maya.
 
 To find your maya script directory, open up the Script Editor in Maya and run the following MEL-command:
 ```internalVar -usd;```
