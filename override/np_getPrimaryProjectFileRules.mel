@@ -15,33 +15,30 @@
 
 global proc string[] np_getPrimaryProjectFileRules(int $bUseDefaults)
 {
-    string $defaults[] =
-	{
-//		Label							            file rule name	    Default
-		(uiRes("m_np_getPrimaryProjectFileRules.kScenes")),               "scene",		    "assets"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kTemplates")),           "templates",		"assets"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kImages")),              "images",		    "render"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kSourceImages")),        "sourceImages",	"assets/textures"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kRenderData")),          "renderData",		"render"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kClips")),               "clips",        "data/clips"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kSound")),               "sound",		    "data/exchange"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kScripts")),             "scripts",		  "data/tools"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kDiskCache")),           "diskCache",		"data/temp/cache/disk"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kMovies")),              "movie",		    "data/exchange"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kTranslatorData")),      "translatorData",	"data/exchange"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kTimeEditor")),          "timeEditor",   "data/Time Editor"
-		,(uiRes("m_np_getPrimaryProjectFileRules.kAutoSave")),            "autoSave",		   "data/autosave"
-        ,(uiRes("m_np_getPrimaryProjectFileRules.kSceneAssembly")),	  "sceneAssembly", "assets/assembly"
-	};
-
-	if(!$bUseDefaults)
-	{
-	    int $listSize = size($defaults);
-	    for($i = 0; $i < $listSize; $i += 3)
-	    {
-	        $defaults[$i+2] = `workspace -q -fre $defaults[$i+1]`;
-	    }
-	}
-
-	return $defaults;
+    string $defaults[] = {
+        // Label file rule name                                      // Default        // New Folder
+        (uiRes("m_np_getPrimaryProjectFileRules.kScenes")),          "scene",          "assets",
+        (uiRes("m_np_getPrimaryProjectFileRules.kTemplates")),       "templates",      "assets",
+        (uiRes("m_np_getPrimaryProjectFileRules.kImages")),          "images",         "render",
+        (uiRes("m_np_getPrimaryProjectFileRules.kSourceImages")),    "sourceImages",   "assets/textures",
+        (uiRes("m_np_getPrimaryProjectFileRules.kRenderData")),      "renderData",     "render",
+        (uiRes("m_np_getPrimaryProjectFileRules.kClips")),           "clips",          "data/clips",
+        (uiRes("m_np_getPrimaryProjectFileRules.kSound")),           "sound",          "exchange",
+        (uiRes("m_np_getPrimaryProjectFileRules.kScripts")),         "scripts",        "data/tools",
+        (uiRes("m_np_getPrimaryProjectFileRules.kDiskCache")),       "diskCache",      "data/temp/cache/disk",
+        (uiRes("m_np_getPrimaryProjectFileRules.kMovies")),          "movie",          "data/exchange",
+        (uiRes("m_np_getPrimaryProjectFileRules.kTranslatorData")),  "translatorData", "data/exchange",
+        (uiRes("m_np_getPrimaryProjectFileRules.kTimeEditor")),      "timeEditor",     "data/timeeditor",
+        (uiRes("m_np_getPrimaryProjectFileRules.kAutoSave")),        "autoSave",       "data/autosave",
+        (uiRes("m_np_getPrimaryProjectFileRules.kSceneAssembly")),   "sceneAssembly",  "assets/assembly"
+    };
+    if(!$bUseDefaults)
+    {
+        int $listSize = size($defaults);
+        for($i = 0; $i < $listSize; $i += 3)
+        {
+            $defaults[$i+2] = `workspace -q -fre $defaults[$i+1]`;
+        }
+    }
+    return $defaults;
 }
