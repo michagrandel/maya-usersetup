@@ -2,6 +2,11 @@
 
 This is a custom user setup to setup and initalize a maya workstation. 
 
+## Requirements
+
+This user setup is pretty simple and should be compatible with most Maya versions.
+If you use something like Maya 2020 or later, you should be fine.
+
 ## Installation
 
 Copy the scripts into your Maya Script directory. After that, restart Maya.
